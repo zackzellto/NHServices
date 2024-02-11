@@ -5,13 +5,13 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-  Button,
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/react";
+import NHServicesLogo from "../../images/logos/nhservices-logo.png";
 
-export default function App() {
+const AppNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
@@ -31,7 +31,7 @@ export default function App() {
     <Navbar onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
         <NavbarBrand>
-          <p className="font-bold text-inherit">ACME</p>
+          <img src={NHServicesLogo} alt="NH Services" className="h-8 w-auto" />
         </NavbarBrand>
       </NavbarContent>
 
@@ -90,4 +90,6 @@ export default function App() {
       />
     </Navbar>
   );
-}
+};
+
+export default AppNavbar;
