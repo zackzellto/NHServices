@@ -11,7 +11,7 @@ const LandingPage = () => {
           alt="NH Services"
           className="h-32 w-auto mt-8"
         />
-        <p className="text-center font-bold text-[#5A5858] text-4xl">
+        <p className="z-10 text-center font-bold text-[#5A5858] text-4xl mt-4">
           Proudly serving Colorado since 2010
         </p>
         <Button
@@ -27,7 +27,7 @@ const LandingPage = () => {
           <div className="z-10 relative text-white">Get an Estimate!</div>
         </Button>
       </div>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center -mt-12 sm:-mt-24">
         <img src={VanPic} alt="NH Services Van" className="h-full w-full" />
       </div>
     </div>
