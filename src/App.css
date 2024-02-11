@@ -5,3 +5,11 @@
   background-clip: text;
   display: inline;
 }
+
+.bg-gradient {
+  background: linear-gradient(to right, #e75909, #54a0d7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}

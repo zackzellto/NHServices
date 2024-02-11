@@ -11,62 +11,38 @@ import {
 } from "@nextui-org/react";
 import NHServicesLogo from "../../images/logos/nhservices-logo.png";
 
+const menuItems = ["About Us", "Gallery", "Equipment", "Contact Us"];
+
 const AppNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
-        <NavbarBrand>
-          <img src={NHServicesLogo} alt="NH Services" className="h-8 w-auto" />
+        <NavbarBrand className="">
+          <Link color="foreground" href="#">
+            <img
+              src={NHServicesLogo}
+              alt="NH Services"
+              className="h-8 w-auto"
+            />
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
-        </NavbarItem>
+      <NavbarContent className="hidden sm:flex gap-4 justify-center items-center">
+        {menuItems.map((item, index) => (
+          <NavbarItem key={index}>
+            <Link color="foreground" href="#">
+              {item}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden md:flex">
-          <span className="text-md text-center text-gray-500">
-            Call for a <span className="underline font-bold">FREE</span>{" "}
-            estimate:
-            <br />
-            <span className="text-lg font-bold text-gradient">
-              (555) 555-5555
-            </span>
-          </span>
-        </NavbarItem>
-      </NavbarContent>
+
       <NavbarMenu>
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={index}>
             <Link
               color={
                 index === 2
@@ -75,7 +51,7 @@ const AppNavbar = () => {
                   ? "danger"
                   : "foreground"
               }
-              className="w-full"
+              className="w-full text-lg"
               href="#"
               size="lg"
             >
@@ -84,6 +60,22 @@ const AppNavbar = () => {
           </NavbarMenuItem>
         ))}
       </NavbarMenu>
+
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden md:flex">
+          <span className="text-md text-center text-gray-500">
+            Call for a <span className="underline font-bold">FREE</span>{" "}
+            estimate:
+            <br />
+            <Link color="foreground" href="tel:13039051470">
+              <span className="text-lg font-bold text-gradient">
+                (303) 905-1470
+              </span>
+            </Link>
+          </span>
+        </NavbarItem>
+      </NavbarContent>
+
       <NavbarMenuToggle
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         className="sm:hidden"
