@@ -11,6 +11,12 @@ import MaintenanceAgreementAd from "../images/maintenance-agreement-ad.png";
 import ImagePlaceholder from "../images/image-placeholder.png";
 import HVACAbstractImage from "../images/hvac-abstract-image.png";
 import ServiceAccordion from "../components/Navbar/Accordions/ServiceAccordion";
+import RUUDLogo from "../images/logos/ruud-logo.png";
+import RemeHaloLogo from "../images/logos/reme-halo-logo.png";
+import NavienLogo from "../images/logos/Navien_Logo.png";
+import HoneywellLogo from "../images/logos/honeywell-logo.png";
+import AprilAireLogo from "../images/logos/aprilaire-logo.png";
+import RheemLogo from "../images/logos/rheem-logo.png";
 
 const LandingPage = () => {
   return (
@@ -122,15 +128,51 @@ const LandingPage = () => {
           backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
         }}
       ></div>
-      <div className="flex flex-col sm:flex-row bg-[#5A5858] text-white">
+      <div className="flex flex-col sm:flex-row bg-[#ffffff] text-white">
         <div className="w-full sm:w-1/2 p-4 text-md sm:text-lg ml-4 sm:ml-20">
           <ServiceAccordion />
         </div>
         <div className="w-full sm:w-1/2 text-center sm:text-left sm:mr-20 sm:mt-8">
+          <div className="w-full flex sm:flex-row sm:w-1/2 text-center sm:text-left sm:mr-20 sm:mt-8">
+            <span className="text-lg flex text-center sm:text-2xl font-bold">
+              Authorized Dealer of:
+            </span>{" "}
+            <img src={RUUDLogo} alt="RUUD" className="h-16 w-auto mx-auto" />
+          </div>
+          <div className="text-xl mb-4 text-center sm:text-2xl font-bold underline">
+            Trusted Brands:
+          </div>
+          <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
+            <img
+              src={RemeHaloLogo}
+              alt="Reme Halo"
+              className="h-20 z-10  w-auto mx-1"
+            />
+            <img
+              src={NavienLogo}
+              alt="Navien"
+              className="h-8 z-10  w-auto mx-1"
+            />
+            <img
+              src={HoneywellLogo}
+              alt="Honeywell"
+              className="h-12 z-10  w-auto mx-1"
+            />
+            <img
+              src={AprilAireLogo}
+              alt="AprilAire"
+              className="h-12 z-10  w-auto mx-1"
+            />
+            <img
+              src={RheemLogo}
+              alt="Rheem"
+              className="z-10 h-14 sm:h-24 w-auto mx-1"
+            />
+          </div>
           <img
             src={HVACAbstractImage}
             alt="HVAC Abstract Image"
-            className="sm:h-[500px] sm:w-[500px] opacity-30 mx-auto"
+            className="sm:h-[500px] sm:w-[500px] opacity-20 mx-auto -mt-80"
           />
         </div>
       </div>

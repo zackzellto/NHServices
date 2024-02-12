@@ -13,11 +13,15 @@ const ServiceAccordion = () => {
       <Accordion className="">
         <AccordionItem
           key="installation-services"
-          title={<span className="text-[#D9D9D9]">Installation Services</span>}
+          title={
+            <span className="text-[#000000] font-semibold">
+              Installation Services
+            </span>
+          }
           onPress={() => handleAccordionItemClick(0)}
           className=""
         >
-          <ul className="list-disc ml-4">
+          <ul className="list-disc ml-4 text-[#5A5858]">
             <li>Furnace Installations</li>
             <li>Air Conditioner Installations</li>
             <li>Water Heater Installation</li>
@@ -33,20 +37,24 @@ const ServiceAccordion = () => {
         </AccordionItem>
         <AccordionItem
           key="maintenance-services"
-          title=<span className="text-[#D9D9D9]">Maintenance Services</span>
+          title=<span className="text-[#000000] font-semibold">
+            Maintenance Services
+          </span>
           onPress={() => handleAccordionItemClick(1)}
         >
-          <ul className="list-disc ml-4">
+          <ul className="list-disc ml-4 text-[#5A5858]">
             <li>Maintenance for all Brands</li>
             <li>Ductwork Cleaning</li>
           </ul>
         </AccordionItem>
         <AccordionItem
           key="real-estate-services"
-          title=<span className="text-[#D9D9D9]">Real Estate Services</span>
+          title=<span className="text-[#000000] font-semibold">
+            Real Estate Services
+          </span>
           onPress={() => handleAccordionItemClick(2)}
         >
-          <ul className="list-disc ml-4">
+          <ul className="list-disc ml-4 text-[#5A5858]">
             <li>Furnace and Air Conditioner Inspections</li>
             <li>Inspection Resolution Repairs</li>
             <li>Furnace Certifications</li>
@@ -54,20 +62,24 @@ const ServiceAccordion = () => {
         </AccordionItem>
         <AccordionItem
           key="swamp-cooler-services"
-          title=<span className="text-[#D9D9D9]">Swamp Cooler Services</span>
+          title=<span className="text-[#000000] font-semibold">
+            Swamp Cooler Services
+          </span>
           onPress={() => handleAccordionItemClick(3)}
         >
-          <ul className="list-disc ml-4">
+          <ul className="list-disc ml-4 text-[#5A5858]">
             <li>Swamp Cooler Installation and Repairs</li>
             <li>Swamp Cooler Start Ups and Winterizing</li>
           </ul>
         </AccordionItem>
         <AccordionItem
           key="maintenance-agreements"
-          title=<span className="text-[#D9D9D9]">Maintenance Agreements</span>
+          title=<span className="text-[#000000] font-semibold">
+            Maintenance Agreements
+          </span>
           onPress={() => handleAccordionItemClick(4)}
         >
-          <ul className="list-disc ml-4">
+          <ul className="list-disc ml-4 text-[#5A5858]">
             <li>
               Discounts on Services for customers with a Maintenance Agreement
             </li>
