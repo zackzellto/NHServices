@@ -9,6 +9,8 @@ import PayPalLogo from "../images/logos/paypal-logo.png";
 import ApplePayLogo from "../images/logos/applepay-logo.png";
 import MaintenanceAgreementAd from "../images/maintenance-agreement-ad.png";
 import ImagePlaceholder from "../images/image-placeholder.png";
+import HVACAbstractImage from "../images/hvac-abstract-image.png";
+import ServiceAccordion from "../components/Navbar/Accordions/ServiceAccordion";
 
 const LandingPage = () => {
   return (
@@ -76,15 +78,15 @@ const LandingPage = () => {
           backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
         }}
       ></div>
-      <div className="flex  bg-[#D9D9D9] text-[#5A5858]">
-        <div className="w-full sm:w-1/2 text-center sm:text-left sm:mr-8 mt-32">
+      <div className="flex flex-col sm:flex-row bg-[#D9D9D9] text-[#5A5858]">
+        <div className="w-full sm:w-1/2 text-center sm:text-left sm:mr-8 mt-8 sm:mt-32">
           <img
             src={ImagePlaceholder}
             alt="Placeholder"
             className="sm:h-96 sm:w-96 mx-auto"
           />
         </div>
-        <div className="w-full sm:w-1/2 p-4 text-md sm:text-lg mr-20 mt-10">
+        <div className="w-full sm:w-1/2 p-4 text-md sm:text-lg mr-20 ">
           <div className="text-xl mb-4 text-center sm:text-3xl font-bold underline">
             About Us
           </div>
@@ -120,6 +122,18 @@ const LandingPage = () => {
           backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
         }}
       ></div>
+      <div className="flex flex-col sm:flex-row bg-[#5A5858] text-white">
+        <div className="w-full sm:w-1/2 p-4 text-md sm:text-lg ml-4 sm:ml-20">
+          <ServiceAccordion />
+        </div>
+        <div className="w-full sm:w-1/2 text-center sm:text-left sm:mr-20 sm:mt-8">
+          <img
+            src={HVACAbstractImage}
+            alt="HVAC Abstract Image"
+            className="sm:h-[500px] sm:w-[500px] opacity-30 mx-auto"
+          />
+        </div>
+      </div>
     </div>
   );
 };
