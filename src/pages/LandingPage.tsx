@@ -7,6 +7,7 @@ import AmexLogo from "../images/logos/amex-logo.png";
 import DiscoverLogo from "../images/logos/discover-logo.png";
 import PayPalLogo from "../images/logos/paypal-logo.png";
 import ApplePayLogo from "../images/logos/applepay-logo.png";
+import MaintenanceAgreementAd from "../images/maintenance-agreement-ad.png";
 
 const LandingPage = () => {
   return (
@@ -34,16 +35,16 @@ const LandingPage = () => {
         <img
           src={NHServicesLogo}
           alt="NH Services"
-          className="h-32 w-auto mt-8 sm:mt-0"
+          className="h-28 sm:h-32 w-auto mt-8 sm:mt-0"
         />
-        <p className="z-10 text-center font-bold text-[#5A5858] text-4xl mt-4">
+        <p className="z-10 text-center font-bold text-[#5A5858] text-xl sm:text-4xl mt-4">
           Proudly serving Colorado since 2010
         </p>
         <Button
           size="lg"
-          className="relative mt-8"
+          className="relative mt-8 shadow-xl"
           style={{
-            backgroundImage: "linear-gradient(to right, #e75909, #54a0d7)",
+            backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
           }}
         >
           <div className="absolute inset-0 flex justify-center items-center">
@@ -52,9 +53,20 @@ const LandingPage = () => {
           <div className="z-10 relative text-white">Get an Estimate!</div>
         </Button>
       </div>
-      <div className="flex flex-col justify-center items-center -mt-12 sm:-mt-24">
-        <img src={VanPic} alt="NH Services Van" className="h-full w-full" />
+      <div className="flex flex-col justify-center items-center -mt-12 sm:-mt-24 relative">
+        <img src={VanPic} alt="NH Services Van" className="h-full w-full z-0" />
+        <img
+          src={MaintenanceAgreementAd}
+          alt="Maintenance Agreement Ad"
+          className="w-1/2 ml-8 absolute bottom-0 transform -translate-x-1/2 z-10"
+        />
       </div>
+      <div
+        className="h-2 w-full"
+        style={{
+          backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
+        }}
+      ></div>
     </div>
   );
 };
