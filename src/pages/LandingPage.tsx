@@ -55,21 +55,25 @@ const LandingPage = () => {
         <img
           src={NHServicesLogo}
           alt="NH Services"
-          className="h-28 sm:h-32 w-auto mt-8 sm:mt-0"
+          className="h-28 sm:h-32 w-auto mt-8 sm:mt-16"
         />
-        {/* Call to Action Button */}
-        <Button
-          size="lg"
-          className="relative mt-8 shadow-xl"
-          style={{
-            backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
-          }}
-        >
-          <div className="absolute inset-0 flex justify-center items-center">
-            <div className="bg-[#5A5858] w-[154px] h-[40px] rounded-xl"></div>
-          </div>
-          <div className="z-10 relative text-white">Get an Estimate!</div>
-        </Button>
+        <span className="text-xl sm:text-2xl font-bold text-center z-20 text-[#5A5858] mt-4 sm:mt-8">
+          Proudly Serving The Denver Metro Area Since 2010
+        </span>
+        <div className="z-20">
+          <Button
+            size="lg"
+            className="relative mt-8 shadow-xl"
+            style={{
+              backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
+            }}
+          >
+            <div className="absolute inset-0 flex justify-center items-center">
+              <div className="bg-[#5A5858] w-[154px] h-[40px] rounded-xl"></div>
+            </div>
+            <div className="z-10 relative text-white">Get an Estimate!</div>
+          </Button>
+        </div>
       </div>
       {/* Van Image Section */}
       <div className="flex flex-col justify-center items-center -mt-12 sm:-mt-24 relative">
@@ -90,7 +94,7 @@ const LandingPage = () => {
       {/* About Us Section */}
       <div className="flex flex-col sm:flex-row bg-[#D9D9D9] text-[#5A5858]">
         {/* About Us Text */}
-        <div className="w-full sm:w-1/2 text-center sm:text-left sm:mr-8 mt-8 sm:mt-32">
+        <div className="w-full p-6 sm:w-1/2 text-center sm:text-left sm:mr-8 mt-8 sm:mt-32">
           <img
             src={ImagePlaceholder}
             alt="Placeholder"
