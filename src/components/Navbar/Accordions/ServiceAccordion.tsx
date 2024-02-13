@@ -10,6 +10,9 @@ const ServiceAccordion = () => {
 
   return (
     <div className="mt-32 mr-10 ">
+      <div className="text-2xl text-center mb-4 font-bold underline text-[#5A5858]">
+        Our Services
+      </div>
       <Accordion className="">
         <AccordionItem
           key="installation-services"
@@ -86,6 +89,12 @@ const ServiceAccordion = () => {
           </ul>
         </AccordionItem>
       </Accordion>
+      <div
+        className="h-2 w-full sm:hidden mb-10"
+        style={{
+          backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
+        }}
+      ></div>
     </div>
   );
 };

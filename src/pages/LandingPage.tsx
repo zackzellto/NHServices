@@ -21,7 +21,9 @@ import RheemLogo from "../images/logos/rheem-logo.png";
 const LandingPage = () => {
   return (
     <div>
+      {/* Header Section */}
       <div className="flex flex-col justify-center items-center">
+        {/* Payment Acceptance */}
         <div className="flex flex-col sm:flex-row sm:ml-auto sm:mr-16 sm:mt-8">
           <span className="text-md text-center text-black">We Accept:</span>
           <div className="flex flex-wrap justify-center sm:justify-start">
@@ -49,14 +51,13 @@ const LandingPage = () => {
             />
           </div>
         </div>
+        {/* NH Services Logo */}
         <img
           src={NHServicesLogo}
           alt="NH Services"
           className="h-28 sm:h-32 w-auto mt-8 sm:mt-0"
         />
-        <p className="z-10 text-center font-bold text-[#5A5858] text-xl sm:text-4xl mt-4">
-          Proudly serving Colorado since 2010
-        </p>
+        {/* Call to Action Button */}
         <Button
           size="lg"
           className="relative mt-8 shadow-xl"
@@ -70,6 +71,7 @@ const LandingPage = () => {
           <div className="z-10 relative text-white">Get an Estimate!</div>
         </Button>
       </div>
+      {/* Van Image Section */}
       <div className="flex flex-col justify-center items-center -mt-12 sm:-mt-24 relative">
         <img src={VanPic} alt="NH Services Van" className="h-full w-full z-0" />
         <img
@@ -78,13 +80,16 @@ const LandingPage = () => {
           className="w-1/2 ml-8 absolute bottom-0 transform -translate-x-1/2 z-10"
         />
       </div>
+      {/* Divider */}
       <div
         className="h-2 w-full"
         style={{
           backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
         }}
       ></div>
+      {/* About Us Section */}
       <div className="flex flex-col sm:flex-row bg-[#D9D9D9] text-[#5A5858]">
+        {/* About Us Text */}
         <div className="w-full sm:w-1/2 text-center sm:text-left sm:mr-8 mt-8 sm:mt-32">
           <img
             src={ImagePlaceholder}
@@ -92,6 +97,7 @@ const LandingPage = () => {
             className="sm:h-96 sm:w-96 mx-auto"
           />
         </div>
+        {/* About Us Content */}
         <div className="w-full sm:w-1/2 p-4 text-md sm:text-lg mr-20 ">
           <div className="text-xl mb-4 text-center sm:text-3xl font-bold underline">
             About Us
@@ -122,60 +128,73 @@ const LandingPage = () => {
           </p>
         </div>
       </div>
+      {/* Divider */}
       <div
         className="h-2 w-full"
         style={{
           backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
         }}
       ></div>
-      <div className="flex flex-col sm:flex-row bg-[#ffffff] text-white">
+      {/* Services Offered & Trusted Brands Section */}
+      <div className="flex flex-col sm:flex-row bg-[#ffffff] text-[#5A5858]">
+        {/* Services Offered */}
         <div className="w-full sm:w-1/2 p-4 text-md sm:text-lg ml-4 sm:ml-20">
           <ServiceAccordion />
         </div>
+        {/* Trusted Brands */}
         <div className="w-full sm:w-1/2 text-center sm:text-left sm:mr-20 sm:mt-8">
-          <div className="w-full flex sm:flex-row sm:w-1/2 text-center sm:text-left sm:mr-20 sm:mt-8">
-            <span className="text-lg flex text-center sm:text-2xl font-bold">
+          <div className="w-full flex items-center justify-center">
+            <span className="text-lg sm:text-2xl font-bold">
               Authorized Dealer of:
-            </span>{" "}
-            <img src={RUUDLogo} alt="RUUD" className="h-16 w-auto mx-auto" />
+            </span>
+            <img src={RUUDLogo} alt="RUUD" className="h-16 w-auto ml-4" />
           </div>
-          <div className="text-xl mb-4 text-center sm:text-2xl font-bold underline">
+          {/* Trusted Brands Title */}
+          <div className="text-xl mb-10 text-center sm:text-2xl font-bold underline">
             Trusted Brands:
           </div>
-          <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
+          {/* Trusted Brands Logos */}
+          <div className="flex flex-wrap gap-4 sm:mt-10 justify-center sm:justify-start">
             <img
               src={RemeHaloLogo}
               alt="Reme Halo"
-              className="h-20 z-10  w-auto mx-1"
+              className="h-20 z-10 w-auto mx-1"
             />
             <img
               src={NavienLogo}
               alt="Navien"
-              className="h-8 z-10  w-auto mx-1"
+              className="h-8 z-10 sm:mb-16 w-auto mx-1"
             />
             <img
               src={HoneywellLogo}
               alt="Honeywell"
-              className="h-12 z-10  w-auto mx-1"
+              className="h-12 z-10 w-auto mx-1"
             />
             <img
               src={AprilAireLogo}
               alt="AprilAire"
-              className="h-12 z-10  w-auto mx-1"
+              className="h-12 z-10 sm:mr-10 sm:mt-16 w-auto mx-1"
             />
             <img
               src={RheemLogo}
               alt="Rheem"
-              className="z-10 h-14 sm:h-24 w-auto mx-1"
+              className="z-10 h-14 sm:ml-24 sm:h-24 w-auto mx-1"
             />
           </div>
+          {/* Abstract Image */}
           <img
             src={HVACAbstractImage}
             alt="HVAC Abstract Image"
-            className="sm:h-[500px] sm:w-[500px] opacity-20 mx-auto -mt-80"
+            className="sm:h-[500px] sm:w-[500px] opacity-20 mx-auto -mt-[300px] sm:-mt-[450px]"
           />
         </div>
-      </div>
+      </div>{" "}
+      <div
+        className="h-2 w-full"
+        style={{
+          backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
+        }}
+      ></div>
     </div>
   );
 };
