@@ -8,7 +8,6 @@ import DiscoverLogo from "../images/logos/discover-logo.png";
 import PayPalLogo from "../images/logos/paypal-logo.png";
 import ApplePayLogo from "../images/logos/applepay-logo.png";
 import MaintenanceAgreementAd from "../images/maintenance-agreement-ad.png";
-import ImagePlaceholder from "../images/image-placeholder.png";
 import HVACAbstractImage from "../images/hvac-abstract-image.png";
 import ServiceAccordion from "../components/Navbar/Accordions/ServiceAccordion";
 import RUUDLogo from "../images/logos/ruud-logo.png";
@@ -17,6 +16,9 @@ import NavienLogo from "../images/logos/Navien_Logo.png";
 import HoneywellLogo from "../images/logos/honeywell-logo.png";
 import AprilAireLogo from "../images/logos/aprilaire-logo.png";
 import RheemLogo from "../images/logos/rheem-logo.png";
+import TestimonialForm from "../components/Navbar/Testimonials/TestimonialForm";
+import AboutUsImage from "../images/gallery/image3.jpeg";
+import ServiceMap from "../images/longmont-to-castle-rock-map.png";
 
 const LandingPage = () => {
   return (
@@ -96,9 +98,9 @@ const LandingPage = () => {
         {/* About Us Text */}
         <div className="w-full p-6 sm:w-1/2 text-center sm:text-left sm:mr-8 mt-8 sm:mt-32">
           <img
-            src={ImagePlaceholder}
+            src={AboutUsImage}
             alt="Placeholder"
-            className="sm:h-96 sm:w-96 mx-auto"
+            className="sm:h-96 sm:w-96 rounded-xl shadow-xl mx-auto"
           />
         </div>
         {/* About Us Content */}
@@ -199,6 +201,44 @@ const LandingPage = () => {
           backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
         }}
       ></div>
+      <div className="flex flex-col sm:flex-row bg-[#D9D9D9] text-[#5A5858]">
+        {/* Testimonials Form */}
+        <div className="w-full p-4">
+          <TestimonialForm />
+        </div>
+      </div>{" "}
+      <div
+        className="h-2 w-full"
+        style={{
+          backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
+        }}
+      ></div>
+      <div className="flex flex-col sm:flex-row bg-[#ffffff] text-[#5A5858]">
+        <h1 className="text-3xl font-bold text-center mt-8 sm:mt-16">
+          Proudly Serving
+        </h1>
+        <div className="w-full p-4">
+          <div className="flex flex-col justify-center sm:justify-end gap-4 mt-4">
+            <span className="text-lg font-bold">Arvada</span>
+            <span className="text-lg font-bold">Aurora</span>
+            <span className="text-lg font-bold">Broomfield</span>
+            <span className="text-lg font-bold">Commerce City</span>
+            <span className="text-lg font-bold">Denver</span>
+            <span className="text-lg font-bold">Englewood</span>
+            <span className="text-lg font-bold">Golden</span>
+            <span className="text-lg font-bold">Lakewood</span>
+            <span className="text-lg font-bold">Littleton</span>
+            <span className="text-lg font-bold">Northglenn</span>
+            <span className="text-lg font-bold">Thornton</span>
+            <span className="text-lg font-bold">Westminster</span>
+            <img
+              src={ServiceMap}
+              alt="Service Map"
+              className="h-96 w-auto mx-auto"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
