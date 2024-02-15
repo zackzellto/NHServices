@@ -172,7 +172,7 @@ const TestimonialForm: React.FC = () => {
       </div>
 
       <div className="w-full sm:w-1/2">
-        <div className="mt-4 sm:mt-0 sm:ml-auto sm:w-full">
+        <div className="mt-4 p-8 sm:mt-0 sm:ml-auto sm:w-full">
           <Slider {...carouselSettings}>
             {testimonials.map((testimonial, index) => (
               <div key={index} className="p-4">

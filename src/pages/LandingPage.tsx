@@ -19,6 +19,9 @@ import RheemLogo from "../images/logos/rheem-logo.png";
 import TestimonialForm from "../components/Navbar/Testimonials/TestimonialForm";
 import AboutUsImage from "../images/gallery/image3.jpeg";
 import ServiceMap from "../images/longmont-to-castle-rock-map.png";
+import BBBLogo from "../images/logos/bbb-logo.png";
+import FAQAccordion from "../components/Navbar/Accordions/FAQAccordion";
+import Footer from "../components/Navbar/Footer/Footer";
 
 const LandingPage = () => {
   return (
@@ -213,31 +216,66 @@ const LandingPage = () => {
           backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
         }}
       ></div>
-      <div className="flex flex-col sm:flex-row bg-[#ffffff] text-[#5A5858]">
-        <h1 className="text-3xl font-bold text-center mt-8 sm:mt-16">
-          Proudly Serving
-        </h1>
-        <div className="w-full p-4">
-          <div className="flex flex-col justify-center sm:justify-end gap-4 mt-4">
-            <span className="text-lg font-bold">Arvada</span>
-            <span className="text-lg font-bold">Aurora</span>
-            <span className="text-lg font-bold">Broomfield</span>
-            <span className="text-lg font-bold">Commerce City</span>
-            <span className="text-lg font-bold">Denver</span>
-            <span className="text-lg font-bold">Englewood</span>
-            <span className="text-lg font-bold">Golden</span>
-            <span className="text-lg font-bold">Lakewood</span>
-            <span className="text-lg font-bold">Littleton</span>
-            <span className="text-lg font-bold">Northglenn</span>
-            <span className="text-lg font-bold">Thornton</span>
-            <span className="text-lg font-bold">Westminster</span>
+      <div className="flex flex-col sm:flex-row sm:p-4 bg-white text-gray-600">
+        <div className="flex flex-col sm:w-1/2">
+          <h1 className="text-3xl underline font-bold text-center mt-8 sm:mt-4">
+            Proudly Serving
+          </h1>
+          <div className="w-full p-4 sm:gap-10 flex justify-center items-center">
             <img
               src={ServiceMap}
               alt="Service Map"
-              className="h-96 w-auto mx-auto"
+              className="h-96 drop-shadow-xl w-auto rounded-xl mr-8 sm:mr-0"
             />
+            <ul className="list-disc ml-4 sm:ml-8">
+              <li>Longmont</li>
+              <li>Erie</li>
+              <li>Broomfield</li>
+              <li>Westminster</li>
+              <li>Thornton</li>
+              <li>Northglenn</li>
+              <li>Federal Heights</li>
+              <li>Commerce City</li>
+              <li>Denver</li>
+              <li>Aurora</li>
+              <li>Centennial</li>
+              <li>Parker</li>
+              <li>Lone Tree</li>
+              <li>Highlands Ranch</li>
+              <li>Castle Rock</li>
+            </ul>
           </div>
         </div>
+        <div className=" sm:mt-24 sm:flex flex-col justify-center items-center sm:w-1/2">
+          <img
+            src={BBBLogo}
+            alt="BBB"
+            className="h-64 w-auto rounded-xl mx-auto"
+          />
+          <h1 className="text-3xl sm:w-3/4 text-red-600 underline font-bold text-center mt-8">
+            Fully Licensed & Insured in the State of Colorado!
+          </h1>
+        </div>
+      </div>
+      <div
+        className="h-2 w-full mt-4"
+        style={{
+          backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
+        }}
+      ></div>
+      <div className="flex justify-center sm:flex-row bg-[#ffffff] text-[#5A5858]">
+        <div className="w-full p-4 sm:w-1/2">
+          <FAQAccordion />
+        </div>
+      </div>{" "}
+      <div
+        className="h-2 w-full mt-4"
+        style={{
+          backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
+        }}
+      ></div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
