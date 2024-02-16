@@ -106,17 +106,19 @@ const GalleryPage: React.FC = () => {
       <div className="mt-auto">
         <Footer />
       </div>
-      <Modal isOpen={modalIsOpen} placement="auto" onClose={closeModal}>
+      <Modal isOpen={modalIsOpen} placement="center" onClose={closeModal}>
         <ModalContent>
           <ModalHeader className="flex flex-col gap-1">
             Gallery Image
           </ModalHeader>
           <ModalBody>
-            <img
-              src={selectedImage}
-              alt="Gallery Image"
-              className="w-full h-auto"
-            />
+            {selectedImage && (
+              <img
+                src={selectedImage}
+                alt="Gallery Image"
+                className="w-full h-auto"
+              />
+            )}
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={closeModal}>
