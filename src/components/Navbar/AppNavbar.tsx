@@ -11,13 +11,7 @@ import {
 } from "@nextui-org/react";
 import NHServicesLogo from "../../images/logos/nhservices-logo.png";
 
-const menuItems = [
-  "About Us",
-  "Services",
-  "Testimonials",
-  "Service Area",
-  "Gallery",
-];
+const menuItems = ["About Us", "Services", "Testimonials", "Service Area"];
 
 const AppNavbar = () => {
   return (
@@ -44,7 +38,10 @@ const AppNavbar = () => {
               {item}
             </Link>
           </NavbarItem>
-        ))}
+        ))}{" "}
+        <Link to="/gallery" className="w-full text-md nav-link">
+          Gallery
+        </Link>
       </NavbarContent>
 
       <NavbarMenu>
@@ -58,6 +55,9 @@ const AppNavbar = () => {
             </Link>
           </NavbarMenuItem>
         ))}
+        <Link to="/gallery" className="w-full text-lg nav-link">
+          Gallery
+        </Link>
       </NavbarMenu>
 
       <NavbarContent justify="end">
