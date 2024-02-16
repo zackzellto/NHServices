@@ -1,4 +1,4 @@
-import AboutUsImage from "../images/gallery/gallery3.jpg";
+import AboutUsImage from "../images/gallery/gallery2.jpeg";
 
 const AboutUsSection = () => {
   return (
@@ -8,7 +8,7 @@ const AboutUsSection = () => {
         {/* About Us Section */}
         <div className="flex flex-col sm:flex-row bg-[#D9D9D9] text-[#5A5858]">
           {/* About Us Text */}
-          <div className="w-full p-6 sm:w-1/2 text-center sm:text-left sm:mr-8 mt-8 sm:mt-32">
+          <div className="w-full p-6 sm:w-1/2 text-center sm:text-left sm:mr-8 mt-8 sm:mt-12">
             <img
               src={AboutUsImage}
               alt="Placeholder"
