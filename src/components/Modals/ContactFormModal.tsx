@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Modal,
   ModalContent,
@@ -8,13 +9,44 @@ import {
   useDisclosure,
   Input,
 } from "@nextui-org/react";
+import axios from "axios";
 
 type ContactFormModalProps = {
   buttonText: string;
 };
 
 const ContactFormModal: React.FC<ContactFormModalProps> = ({ buttonText }) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleSubmit = async () => {
+    // Get form data
+    const firstName = (document.getElementById("firstName") as HTMLInputElement)
+      .value;
+    const lastName = (document.getElementById("lastName") as HTMLInputElement)
+      .value;
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const phoneNumber = (
+      document.getElementById("phoneNumber") as HTMLInputElement
+    ).value;
+    const message = (document.getElementById("message") as HTMLInputElement)
+      .value;
+
+    try {
+      // Send email data to backend for processing
+      await axios.post("/api/send-email", {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        message,
+      });
+      alert("Email sent successfully!");
+      onClose(); // Close the modal after successful submission
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send email. Please try again later.");
+    }
+  };
 
   return (
     <div className="flex flex-col gap-2 p-4 drop-shadow-xl">
@@ -27,33 +59,57 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ buttonText }) => {
       >
         {buttonText}
       </Button>
-      <Modal isOpen={isOpen} placement="auto" onOpenChange={onOpenChange}>
+      <Modal isOpen={isOpen} placement="auto" onClose={onClose}>
         <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">
-                Contact Us
-              </ModalHeader>
-              <ModalBody>
-                <Input isRequired fullWidth size="sm" label="First Name" />
-                <Input isRequired fullWidth size="sm" label="Last Name" />
-                <Input isRequired fullWidth size="sm" label="Email" />
-                <Input isRequired fullWidth size="sm" label="Phone Number" />
-                <Input
-                  isRequired
-                  fullWidth
-                  size="lg"
-                  className=""
-                  label="Message"
-                />
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onPress={onClose}>
-                  Send
-                </Button>
-              </ModalFooter>
-            </>
-          )}
+          <ModalHeader className="flex flex-col gap-1">Contact Us</ModalHeader>
+          <ModalBody>
+            <Input
+              id="firstName"
+              isRequired
+              fullWidth
+              size="sm"
+              label="First Name"
+            />
+            <Input
+              id="lastName"
+              isRequired
+              fullWidth
+              size="sm"
+              label="Last Name"
+            />
+            <Input
+              id="email"
+              isRequired
+              fullWidth
+              size="sm"
+              label="Email"
+              type="email"
+            />
+            <Input
+              id="phoneNumber"
+              isRequired
+              fullWidth
+              size="sm"
+              label="Phone Number"
+              type="tel"
+            />
+            <Input
+              id="message"
+              isRequired
+              fullWidth
+              size="lg"
+              className=""
+              label="Message"
+            />
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onPress={handleSubmit}>
+              Send
+            </Button>
+            <Button color="secondary" onClick={onClose}>
+              Cancel
+            </Button>
+          </ModalFooter>
         </ModalContent>
       </Modal>
     </div>

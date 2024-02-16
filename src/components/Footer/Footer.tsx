@@ -4,6 +4,8 @@ import NHServicesLogo from "../../images/logos/nhservices-logo.png";
 import FacebookIcon from "../../images/logos/facebook-icon.png";
 import XIcon from "../../images/logos/x-icon.png";
 import InstagramIcon from "../../images/logos/instagram-icon.png";
+import LogiCodeSolutionsLogo from "../../images/logos/LogiCodeSolutions-Logo-White-Blue.png";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   const socialMediaLinks = [
@@ -42,7 +44,7 @@ const Footer: React.FC = () => {
           alt="QR Code"
           className="w-32 h-32 mb-2 rounded-md drop-shadow-lg"
         />
-        <div className="flex space-x-4 drop-shadow-lg mt-4">
+        <div className="flex space-x-4 drop-shadow-lg mt-4 mb-4">
           {socialMediaLinks.map((link, index) => (
             <a
               key={index}
@@ -53,6 +55,18 @@ const Footer: React.FC = () => {
               <img src={link.icon} alt={link.name} className="w-8 h-8" />
             </a>
           ))}
+        </div>
+        <div className="-mb-6">
+          <span>
+            Built with ❤️ by:{" "}
+            <Link to="https://logicodesolutions.com" target="_blank">
+              <img
+                src={LogiCodeSolutionsLogo}
+                alt="LogiCode Solutions"
+                className="w-auto h-8 inline"
+              />
+            </Link>
+          </span>
         </div>
       </div>
 
