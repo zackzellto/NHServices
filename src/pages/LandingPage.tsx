@@ -74,7 +74,12 @@ const LandingPage = () => {
           Proudly Serving The Denver Metro Area Since 2010
         </span>
         <div className="z-20">
-          <ContactFormModal buttonText="Get An Estimate!" />
+          <ContactFormModal
+            buttonText="Get An Estimate!"
+            serviceId="service_nq33ies"
+            templateId="template_e7u5n0q"
+            userId="82-EZhibvghRxme11"
+          />
         </div>
       </div>
       {/* Van Image Section */}

@@ -9,37 +9,48 @@ import {
   useDisclosure,
   Input,
 } from "@nextui-org/react";
-import axios from "axios";
+import emailjs from "emailjs-com"; // Import the EmailJS library
 
 type ContactFormModalProps = {
   buttonText: string;
+  serviceId: string; // Add a prop for the EmailJS service ID
+  templateId: string; // Add a prop for the EmailJS template ID
+  userId: string; // Add a prop for the EmailJS user ID
 };
 
-const ContactFormModal: React.FC<ContactFormModalProps> = ({ buttonText }) => {
+const ContactFormModal: React.FC<ContactFormModalProps> = ({
+  buttonText,
+  serviceId,
+  templateId,
+  userId,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSubmit = async () => {
-    // Get form data
-    const firstName = (document.getElementById("firstName") as HTMLInputElement)
-      .value;
-    const lastName = (document.getElementById("lastName") as HTMLInputElement)
-      .value;
-    const email = (document.getElementById("email") as HTMLInputElement).value;
-    const phoneNumber = (
-      document.getElementById("phoneNumber") as HTMLInputElement
-    ).value;
-    const message = (document.getElementById("message") as HTMLInputElement)
-      .value;
-
     try {
-      // Send email data to backend for processing
-      await axios.post("/api/send-email", {
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        message,
-      });
+      const formData = {
+        firstName: (document.getElementById("firstName") as HTMLInputElement)
+          .value,
+        lastName: (document.getElementById("lastName") as HTMLInputElement)
+          .value,
+        email: (document.getElementById("email") as HTMLInputElement).value,
+        phoneNumber: (
+          document.getElementById("phoneNumber") as HTMLInputElement
+        ).value,
+        message: (document.getElementById("message") as HTMLInputElement).value,
+      };
+
+      // Add this part to create formData object with placeholders
+      const emailData = {
+        to_name: "NH Services", // You can specify a default value or omit it if not needed
+        from_name: `${formData.firstName} ${formData.lastName}`, // Combine first name and last name
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        message: formData.message,
+      };
+
+      await emailjs.send(serviceId, templateId, emailData, userId);
+
       alert("Email sent successfully!");
       onClose(); // Close the modal after successful submission
     } catch (error) {
