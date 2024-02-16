@@ -1,4 +1,4 @@
-import AboutUsImage from "../images/gallery/image3.jpeg";
+import AboutUsImage from "../images/gallery/gallery3.jpg";
 
 const AboutUsSection = () => {
   return (

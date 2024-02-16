@@ -1,21 +1,67 @@
 import React, { useState } from "react";
 import Footer from "../components/Footer/Footer";
 import NHServicesLogo from "../images/logos/nhservices-logo.png";
-import { Button } from "@nextui-org/react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+} from "@nextui-org/react";
+import GalleryImage1 from "../images/gallery/gallery1.jpeg";
+import GalleryImage2 from "../images/gallery/gallery2.jpeg";
+import GalleryImage3 from "../images/gallery/gallery3.jpg";
+import GalleryImage4 from "../images/gallery/gallery4.jpg";
+import GalleryImage5 from "../images/gallery/gallery5.jpg";
+import GalleryImage6 from "../images/gallery/gallery6.jpg";
+import GalleryImage7 from "../images/gallery/gallery7.jpg";
+import GalleryImage8 from "../images/gallery/gallery8.jpg";
+import GalleryImage9 from "../images/gallery/gallery9.jpg";
+import GalleryImage10 from "../images/gallery/gallery10.jpg";
+import GalleryImage11 from "../images/gallery/gallery11.jpg";
+import GalleryImage12 from "../images/gallery/gallery12.jpg";
+import GalleryImage13 from "../images/gallery/gallery13.jpg";
+import GalleryImage14 from "../images/gallery/gallery14.jpg";
 
-// Sample array of image URLs - replace these with your actual image URLs
-const imageArray = new Array(50)
-  .fill(0)
-  .map((_, index) => `https://via.placeholder.com/150?text=Image+${index + 1}`);
+const imageArray: string[] = [
+  GalleryImage1,
+  GalleryImage2,
+  GalleryImage3,
+  GalleryImage4,
+  GalleryImage5,
+  GalleryImage6,
+  GalleryImage7,
+  GalleryImage8,
+  GalleryImage9,
+  GalleryImage10,
+  GalleryImage11,
+  GalleryImage12,
+  GalleryImage13,
+  GalleryImage14,
+];
 
-const GalleryPage = () => {
+const GalleryPage: React.FC = () => {
   const [visibleImages, setVisibleImages] = useState(8); // Initially show 8 images
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const imagesPerLoad = 8; // Number of images to load per click
 
   const loadMoreImages = () => {
     setVisibleImages((prevVisibleImages) =>
       Math.min(prevVisibleImages + imagesPerLoad, imageArray.length)
     );
+  };
+
+  const handleImageClick = (imageUrl: string) => {
+    setSelectedImage(imageUrl);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+    setModalIsOpen(false);
   };
 
   return (
@@ -31,11 +77,16 @@ const GalleryPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-4 bg-gray-300 rounded-xl gap-4 justify-center p-2">
         {imageArray.slice(0, visibleImages).map((imageUrl, index) => (
           <div key={index} className="mb-4">
-            <img
-              src={imageUrl}
-              alt={`Gallery ${index + 1}`}
-              className="w-full h-auto drop-shadow-xl p-2 mx-auto sm:w-[350px] sm:h-550px"
-            />
+            <div
+              onClick={() => handleImageClick(imageUrl)}
+              className="cursor-pointer"
+            >
+              <img
+                src={imageUrl}
+                alt={`Gallery ${index + 1}`}
+                className="w-full h-auto rounded-xl drop-shadow-xl p-2 mx-auto sm:w-[350px] sm:h-550px transition-transform transform hover:scale-105"
+              />
+            </div>
           </div>
         ))}
       </div>
@@ -55,6 +106,25 @@ const GalleryPage = () => {
       <div className="mt-auto">
         <Footer />
       </div>
+      <Modal isOpen={modalIsOpen} placement="auto" onClose={closeModal}>
+        <ModalContent>
+          <ModalHeader className="flex flex-col gap-1">
+            Gallery Image
+          </ModalHeader>
+          <ModalBody>
+            <img
+              src={selectedImage}
+              alt="Gallery Image"
+              className="w-full h-auto"
+            />
+          </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={closeModal}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 };
