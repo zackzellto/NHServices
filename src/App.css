@@ -13,3 +13,7 @@
   background-clip: text;
   display: inline;
 }
+
+html {
+  scroll-behavior: smooth;
+}

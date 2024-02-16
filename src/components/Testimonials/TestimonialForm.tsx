@@ -152,6 +152,7 @@ const TestimonialForm: React.FC = () => {
               label="Message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              maxLength={250}
             />
             <div className="flex items-center mb-4">
               <label className="block mr-2 text-white">Rate Us!:</label>
@@ -195,7 +196,7 @@ const TestimonialForm: React.FC = () => {
                       >
                         Delete
                       </button>
-                      <div>
+                      <div className="flex">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <svg
                             key={i}

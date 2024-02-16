@@ -1,26 +1,30 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/react";
 import NHServicesLogo from "../../images/logos/nhservices-logo.png";
 
-const menuItems = ["About Us", "Gallery", "Equipment", "Contact Us"];
+const menuItems = [
+  "About Us",
+  "Services",
+  "Testimonials",
+  "Service Area",
+  "Gallery",
+];
 
 const AppNavbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar>
       <NavbarContent>
-        <NavbarBrand className="">
-          <Link color="foreground" href="#">
+        <NavbarBrand>
+          <Link to="/" className="nav-link">
             <img
               src={NHServicesLogo}
               alt="NH Services"
@@ -33,7 +37,10 @@ const AppNavbar = () => {
       <NavbarContent className="hidden sm:flex gap-4 justify-center items-center">
         {menuItems.map((item, index) => (
           <NavbarItem key={index}>
-            <Link color="foreground" href="#">
+            <Link
+              to={`/#${item.toLowerCase().replace(/\s+/g, "")}`}
+              className="nav-link"
+            >
               {item}
             </Link>
           </NavbarItem>
@@ -44,16 +51,8 @@ const AppNavbar = () => {
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={index}>
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              className="w-full text-lg"
-              href="#"
-              size="lg"
+              to={`/#${item.toLowerCase().replace(/\s+/g, "")}`}
+              className="w-full text-lg nav-link"
             >
               {item}
             </Link>
@@ -67,19 +66,16 @@ const AppNavbar = () => {
             Call for a <span className="underline font-bold">FREE</span>{" "}
             estimate:
             <br />
-            <Link color="foreground" href="tel:13039051470">
+            <a href="tel:13039051470" className="nav-link">
               <span className="text-lg font-bold text-gradient">
                 (303) 905-1470
               </span>
-            </Link>
+            </a>
           </span>
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenuToggle
-        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        className="sm:hidden"
-      />
+      <NavbarMenuToggle aria-label="Toggle menu" className="sm:hidden" />
     </Navbar>
   );
 };

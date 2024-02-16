@@ -1,9 +1,9 @@
 import React from "react";
-import SocialMediaQRCode from "../../../images/NHServices_QR_Code.svg";
-import NHServicesLogo from "../../../images/logos/nhservices-logo.png";
-import FacebookIcon from "../../../images/logos/facebook-icon.png";
-import XIcon from "../../../images/logos/x-icon.png";
-import InstagramIcon from "../../../images/logos/instagram-icon.png";
+import SocialMediaQRCode from "../../images/NHServices_QR_Code.svg";
+import NHServicesLogo from "../../images/logos/nhservices-logo.png";
+import FacebookIcon from "../../images/logos/facebook-icon.png";
+import XIcon from "../../images/logos/x-icon.png";
+import InstagramIcon from "../../images/logos/instagram-icon.png";
 
 const Footer: React.FC = () => {
   const socialMediaLinks = [
