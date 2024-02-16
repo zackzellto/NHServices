@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
             </a>
           ))}
         </div>
-        <div className="-mb-6">
+        <div className="hidden sm:block -mb-6">
           <span>
             Built with ❤️ by:{" "}
             <Link to="https://logicodesolutions.com" target="_blank">
@@ -85,6 +85,18 @@ const Footer: React.FC = () => {
           <a href="mailto:nhserviceshvac@gmail.com" className="underline">
             nhserviceshvac@gmail.com
           </a>
+        </div>
+        <div className="-mb-6 sm:hidden mt-4">
+          <span>
+            Built with ❤️ by:{" "}
+            <Link to="https://logicodesolutions.com" target="_blank">
+              <img
+                src={LogiCodeSolutionsLogo}
+                alt="LogiCode Solutions"
+                className="w-auto h-8 inline"
+              />
+            </Link>
+          </span>
         </div>
       </div>
     </footer>
