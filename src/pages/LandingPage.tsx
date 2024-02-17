@@ -76,9 +76,9 @@ const LandingPage = () => {
         <div className="z-20">
           <ContactFormModal
             buttonText="Get An Estimate!"
-            serviceId="service_nq33ies"
-            templateId="template_e7u5n0q"
-            userId="82-EZhibvghRxme11"
+            serviceId={import.meta.env.VITE_APP_EMAILJS_SERVICE_ID}
+            templateId={import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID}
+            userId={import.meta.env.VITE_APP_EMAILJS_USER_ID}
           />
         </div>
       </div>

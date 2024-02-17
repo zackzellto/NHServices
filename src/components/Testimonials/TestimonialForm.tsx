@@ -86,11 +86,11 @@ const TestimonialForm: React.FC = () => {
     setRating(0);
   };
 
-  const handleDeleteTestimonial = (index: number) => {
-    const updatedTestimonials = testimonials.filter((_, i) => i !== index);
-    setTestimonials(updatedTestimonials);
-    localStorage.setItem("testimonials", JSON.stringify(updatedTestimonials));
-  };
+  // const handleDeleteTestimonial = (index: number) => {
+  //   const updatedTestimonials = testimonials.filter((_, i) => i !== index);
+  //   setTestimonials(updatedTestimonials);
+  //   localStorage.setItem("testimonials", JSON.stringify(updatedTestimonials));
+  // };
 
   const carouselSettings = {
     dots: true,
@@ -189,26 +189,24 @@ const TestimonialForm: React.FC = () => {
                     <p className="mt-2 p-4 overflow-auto">
                       "{testimonial.message}"
                     </p>
-                    <div className="flex justify-between items-end">
-                      <button
+                    {/* <button
                         className="text-yellow-500"
                         onClick={() => handleDeleteTestimonial(index)}
                       >
                         Delete
-                      </button>
-                      <div className="flex">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <svg
-                            key={i}
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 24 24"
-                            fill="#FBBF24" // Changed color to yellow
-                          >
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                          </svg>
-                        ))}
-                      </div>
+                      </button> */}
+                    <div className="flex justify-end items-end">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <svg
+                          key={i}
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          viewBox="0 0 24 24"
+                          fill="#FBBF24" // Changed color to yellow
+                        >
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                        </svg>
+                      ))}
                     </div>
                   </div>
                 </Card>
