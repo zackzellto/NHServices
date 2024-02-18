@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 interface Testimonial {
+  _id: string;
   firstName: string;
   lastName: string;
   message: string;
@@ -58,13 +59,23 @@ const TestimonialForm: React.FC = () => {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   useEffect(() => {
-    const savedTestimonials = JSON.parse(
-      localStorage.getItem("testimonials") || "[]"
-    );
-    setTestimonials(savedTestimonials.slice(0, 5)); // Display only the newest 5 testimonials
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/testimonials");
+        if (response.ok) {
+          const data = await response.json();
+          setTestimonials(data);
+        } else {
+          throw new Error("Failed to fetch testimonials");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    fetchTestimonials();
   }, []);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!firstName || !lastName || !message || rating === 0) {
       alert("All fields are required for submission!");
@@ -72,31 +83,43 @@ const TestimonialForm: React.FC = () => {
     }
 
     const newTestimonial: Testimonial = {
+      _id: Math.random().toString(36).substr(2, 9), // Generate a random id (not recommended for production)
       firstName,
       lastName,
       message,
       rating,
     };
-    const updatedTestimonials = [newTestimonial, ...testimonials.slice(0, 4)]; // Add the newest testimonial to the beginning and keep only the newest 4 from the existing ones
-    setTestimonials(updatedTestimonials);
-    localStorage.setItem("testimonials", JSON.stringify(updatedTestimonials));
-    setFirstName("");
-    setLastName("");
-    setMessage("");
-    setRating(0);
-  };
 
-  // const handleDeleteTestimonial = (index: number) => {
-  //   const updatedTestimonials = testimonials.filter((_, i) => i !== index);
-  //   setTestimonials(updatedTestimonials);
-  //   localStorage.setItem("testimonials", JSON.stringify(updatedTestimonials));
-  // };
+    try {
+      const response = await fetch("http://localhost:3000/testimonials", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTestimonial),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setTestimonials([...testimonials, data]);
+        // Clear form fields
+        setFirstName("");
+        setLastName("");
+        setMessage("");
+        setRating(0);
+      } else {
+        throw new Error("Failed to add testimonial");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   const carouselSettings = {
     dots: true,
     infinite: true,
     speed: 2000,
-    slidesToShow: 1, // Show 1 card at a time
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -175,8 +198,8 @@ const TestimonialForm: React.FC = () => {
       <div className="w-full sm:w-1/2">
         <div className="mt-4 p-8 sm:mt-0 sm:ml-auto sm:w-full">
           <Slider {...carouselSettings}>
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="p-4">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial._id} className="p-4">
                 <Card
                   style={{
                     backgroundImage:
@@ -189,12 +212,6 @@ const TestimonialForm: React.FC = () => {
                     <p className="mt-2 p-4 overflow-auto">
                       "{testimonial.message}"
                     </p>
-                    {/* <button
-                        className="text-yellow-500"
-                        onClick={() => handleDeleteTestimonial(index)}
-                      >
-                        Delete
-                      </button> */}
                     <div className="flex justify-end items-end">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <svg
