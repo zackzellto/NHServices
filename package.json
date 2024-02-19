@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "build:frontend": "vite build",
+    "build": "concurrently \"npm run build:frontend\" \"npm run build:backend\"",
     "build:backend": "tsc -p tsconfig.node.json",
     "dev:backend": "nodemon backend/src/index.js",
     "dev:frontend": "vite",
