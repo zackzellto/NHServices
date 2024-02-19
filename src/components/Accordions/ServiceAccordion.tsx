@@ -9,7 +9,7 @@ const ServiceAccordion = () => {
   };
 
   return (
-    <div className="mt-32 mr-10 ">
+    <div className="mt-12 mr-10 ">
       <div className="text-2xl text-center mb-4 font-bold underline text-[#5A5858]">
         Our Services
       </div>

@@ -175,7 +175,7 @@ const TestimonialForm: React.FC = () => {
               label="Message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              maxLength={250}
+              maxLength={300}
             />
             <div className="flex items-center mb-4">
               <label className="block mr-2 text-white">Rate Us!:</label>
@@ -208,11 +208,12 @@ const TestimonialForm: React.FC = () => {
                   className=" text-white p-2 rounded-lg shadow-lg w-full"
                 >
                   <div className="bg-[#5A5858] p-4">
-                    <h3 className="text-xl font-bold">{`${testimonial.firstName} ${testimonial.lastName}`}</h3>
+                    <h3 className="text-xl font-bold underline">{`${testimonial.firstName} ${testimonial.lastName}`}</h3>
                     <p className="mt-2 p-4 overflow-auto">
                       "{testimonial.message}"
                     </p>
-                    <div className="flex justify-end items-end">
+                    <div className="flex justify-end gap-2 items-end">
+                      Rating:
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <svg
                           key={i}

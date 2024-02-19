@@ -6,17 +6,17 @@ const AboutUsSection = () => {
       {" "}
       <div id="aboutus">
         {/* About Us Section */}
-        <div className="flex flex-col sm:flex-row bg-[#D9D9D9] text-[#5A5858]">
+        <div className="flex flex-col p-8 sm:flex-row bg-[#D9D9D9] text-[#5A5858]">
           {/* About Us Text */}
           <div className="w-full p-6 sm:w-1/2 text-center sm:text-left sm:mr-8 mt-8 sm:mt-12">
             <img
               src={AboutUsImage}
               alt="Placeholder"
-              className="sm:h-96 sm:w-96 rounded-xl shadow-xl mx-auto"
+              className="sm:w-96 rounded-xl shadow-xl mx-auto"
             />
           </div>
           {/* About Us Content */}
-          <div className="w-full sm:w-1/2 p-4 text-md sm:text-lg mr-20 ">
+          <div className="w-full sm:w-1/2 p-4 text-md sm:text-lg mr-20 sm:mt-20">
             <div className="text-xl mb-4 text-center sm:text-3xl font-bold underline">
               About Us
             </div>

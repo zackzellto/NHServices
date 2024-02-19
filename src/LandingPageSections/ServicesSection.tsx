@@ -16,11 +16,11 @@ const ServicesSection = () => {
         className="flex flex-col sm:flex-row bg-[#ffffff] text-[#5A5858]"
       >
         {/* Services Offered */}
-        <div className="w-full sm:w-1/2 p-4 text-md sm:text-lg ml-4 sm:ml-20">
+        <div className="w-full sm:w-1/2 p-8 text-md sm:text-lg ml-4 sm:ml-20">
           <ServiceAccordion />
         </div>
         {/* Trusted Brands */}
-        <div className="w-full sm:w-1/2 text-center sm:text-left sm:mr-20 sm:mt-8">
+        <div className="w-full sm:w-1/2 text-center sm:text-left sm:mr-20 mt-8 sm:mt-16 sm:p-8">
           <div className="w-full flex items-center justify-center">
             <span className="text-lg sm:text-2xl font-bold">
               Authorized Dealer of:

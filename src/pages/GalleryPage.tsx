@@ -23,6 +23,8 @@ import GalleryImage11 from "../images/gallery/gallery11.jpg";
 import GalleryImage12 from "../images/gallery/gallery12.jpg";
 import GalleryImage13 from "../images/gallery/gallery13.jpg";
 import GalleryImage14 from "../images/gallery/gallery14.jpg";
+import GalleryImage15 from "../images/gallery/gallery15.jpg";
+import GalleryImage16 from "../images/gallery/gallery16.jpg";
 
 const imageArray: string[] = [
   GalleryImage1,
@@ -39,6 +41,8 @@ const imageArray: string[] = [
   GalleryImage12,
   GalleryImage13,
   GalleryImage14,
+  GalleryImage15,
+  GalleryImage16,
 ];
 
 const GalleryPage: React.FC = () => {

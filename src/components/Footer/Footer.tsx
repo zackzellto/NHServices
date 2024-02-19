@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
   const socialMediaLinks = [
     {
       name: "Facebook",
-      url: "https://www.facebook.com/nhservices",
+      url: "https://www.facebook.com/profile.php?id=100064849591688",
       icon: FacebookIcon,
     },
     {
