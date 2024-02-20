@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
 const { json } = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const serverless = require("serverless-http");
 
 const app = express();
 
@@ -62,5 +62,8 @@ app.get("/testimonials", async (req, res) => {
   }
 });
 
-// Wrap the Express app with serverless-http for deployment as a Netlify Function
-module.exports.handler = serverless(app);
+module.exports = app;
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
