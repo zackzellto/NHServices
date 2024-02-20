@@ -8,16 +8,6 @@ import { MongoClient } from "mongodb";
 
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
-// Reusable connection pool
-let clientPromise;
-
-async function connectToMongoDB() {
-  await mongoClient.connect();
-  clientPromise = Promise.resolve(mongoClient);
-}
-
-connectToMongoDB();
-
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -32,33 +22,48 @@ const TestimonialSchema = new Schema({
 });
 const Testimonial = model("Testimonial", TestimonialSchema);
 
-router.get("/", async (req, res) => {
+// Async function to set up MongoDB connection and start server
+async function startServer() {
   try {
-    const client = await clientPromise;
+    await mongoClient.connect();
+    const client = mongoClient;
     const db = client.db();
     const collection = db.collection("testimonials");
-    const testimonials = await collection.find().toArray();
-    res.json(testimonials);
-  } catch (error) {
-    console.error("Error fetching testimonials:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
 
-router.post("/", async (req, res) => {
-  try {
-    const client = await clientPromise;
-    const db = client.db();
-    const collection = db.collection("testimonials");
-    const testimonial = new Testimonial(req.body);
-    await collection.insertOne(testimonial);
-    res.json(testimonial);
-  } catch (error) {
-    console.error("Error adding testimonial:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
+    // Route handlers
+    router.get("/", async (req, res) => {
+      try {
+        const testimonials = await collection.find().toArray();
+        res.json(testimonials);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+      }
+    });
 
-app.use("/.netlify/functions/testimonials", router);
+    router.post("/", async (req, res) => {
+      try {
+        const testimonial = new Testimonial(req.body);
+        await collection.insertOne(testimonial);
+        res.json(testimonial);
+      } catch (error) {
+        console.error("Error adding testimonial:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+      }
+    });
+
+    app.use("/.netlify/functions/testimonials", router);
+
+    // Start the server
+    app.listen(3000, () => {
+      console.log("Server is running on port 3000");
+    });
+  } catch (error) {
+    console.error("Error setting up server:", error);
+  }
+}
+
+// Call the function to start the server
+startServer();
 
 export const handler = serverless(app);
