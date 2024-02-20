@@ -1,5 +1,9 @@
 import { connect, Schema, model } from "mongoose";
 import serverless from "serverless-http";
+import express from "express";
+import cors from "cors";
+
+const app = express();
 
 // MongoDB URI Connection String
 const MONGODB_URI = `mongodb+srv://nhservices:${encodeURIComponent(
@@ -22,12 +26,14 @@ const testimonialSchema = new Schema({
 // Create a Testimonial model
 const Testimonial = model("Testimonial", testimonialSchema);
 
-// Handler function for creating a testimonial
-export const createTestimonial = async (event, context) => {
-  context.callbackWaitsForEmptyEventLoop = false; // Prevents function from keeping the connection open
+// Middleware to parse JSON request bodies
+app.use(express.json());
+app.use(cors());
 
+// Create a testimonial
+app.post("/testimonials", async (req, res) => {
+  const { firstName, lastName, message, rating } = req.body;
   try {
-    const { firstName, lastName, message, rating } = JSON.parse(event.body);
     const testimonial = new Testimonial({
       firstName,
       lastName,
@@ -35,35 +41,21 @@ export const createTestimonial = async (event, context) => {
       rating,
     });
     await testimonial.save();
-    return {
-      statusCode: 201,
-      body: JSON.stringify(testimonial),
-    };
+    res.status(201).json(testimonial);
   } catch (err) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: err.message }),
-    };
+    res.status(400).json({ message: err.message });
   }
-};
+});
 
-// Handler function for getting all testimonials
-export const getTestimonials = async (event, context) => {
-  context.callbackWaitsForEmptyEventLoop = false; // Prevents function from keeping the connection open
-
+// Get all testimonials
+app.get("/testimonials", async (req, res) => {
   try {
     const testimonials = await Testimonial.find();
-    return {
-      statusCode: 200,
-      body: JSON.stringify(testimonials),
-    };
+    res.status(200).json(testimonials);
   } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ message: err.message }),
-    };
+    res.status(500).json({ message: err.message });
   }
-};
+});
 
-// Export the serverless functions
-export const handler = serverless({ createTestimonial, getTestimonials });
+// Wrap the Express app with serverless-http
+export const handler = serverless(app);
