@@ -117,7 +117,10 @@ const EquipmentDropdown = () => {
                   <div>
                     {equipment.brochures.map((brochure, brochureIndex) => (
                       <div key={brochureIndex}>
-                        <Document file={brochure.pdf}>
+                        <Document
+                          file={brochure.pdf}
+                          workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.worker.min.js"
+                        >
                           <Page pageNumber={1} />
                         </Document>
                       </div>
