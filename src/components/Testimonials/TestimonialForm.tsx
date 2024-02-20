@@ -62,9 +62,7 @@ const TestimonialForm: React.FC = () => {
     const fetchTestimonials = async () => {
       try {
         // Adjusted for a generic Netlify function URL pattern
-        const response = await fetch(
-          "https://nhserviceshvac.com/.netlify/functions/testimonials"
-        );
+        const response = await fetch("/.netlify/functions/testimonials");
         if (response.ok) {
           const data = await response.json();
           setTestimonials(data);
@@ -94,16 +92,13 @@ const TestimonialForm: React.FC = () => {
 
     try {
       // Adjusted for a generic Netlify function URL pattern
-      const response = await fetch(
-        "https://nhserviceshvac.com/.netlify/functions/testimonials",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newTestimonial),
-        }
-      );
+      const response = await fetch("/.netlify/functions/testimonials", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTestimonial),
+      });
 
       if (response.ok) {
         const data = await response.json();
