@@ -6,7 +6,7 @@ const cors = require("cors");
 
 const app = express();
 
-// MongoDB URI
+// MongoDB URI Connection String
 const MONGODB_URI = `mongodb+srv://nhservices:${encodeURIComponent(
   "mDVarxVc27hHS4."
 )}@cluster0.fveujrt.mongodb.net/db?retryWrites=true&w=majority`;
@@ -17,7 +17,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Connected to MongoDB"))
+  .then(() => console.log("Connected to your MongoDB"))
   .catch((err) => console.error("Failed to connect to MongoDB", err));
 
 // Define a schema for testimonials
