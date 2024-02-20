@@ -61,8 +61,9 @@ const TestimonialForm: React.FC = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        // Update the fetch URL for the GET request
-        const response = await fetch("localhost:5000/get_testimonials");
+        // Make a GET request to the Netlify function endpoint to fetch testimonials
+        const response = await fetch("/.netlify/functions/getTestimonial");
+
         if (response.ok) {
           const data = await response.json();
           setTestimonials(data);
@@ -73,6 +74,7 @@ const TestimonialForm: React.FC = () => {
         console.error("Error:", error);
       }
     };
+
     fetchTestimonials();
   }, []);
 
@@ -91,8 +93,8 @@ const TestimonialForm: React.FC = () => {
     };
 
     try {
-      // Update the fetch URL for the POST request
-      const response = await fetch("localhost:5000/add_testimonial", {
+      // Make a POST request to the Netlify function endpoint with the testimonial data
+      const response = await fetch("/.netlify/functions/addTestimonial", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
