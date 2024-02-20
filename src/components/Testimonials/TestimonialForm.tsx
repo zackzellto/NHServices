@@ -62,7 +62,7 @@ const TestimonialForm: React.FC = () => {
     const fetchTestimonials = async () => {
       try {
         // Update the fetch URL for the GET request
-        const response = await fetch("/.netlify/functions/get_testimonials");
+        const response = await fetch("localhost:5000/get_testimonials");
         if (response.ok) {
           const data = await response.json();
           setTestimonials(data);
@@ -92,7 +92,7 @@ const TestimonialForm: React.FC = () => {
 
     try {
       // Update the fetch URL for the POST request
-      const response = await fetch("/.netlify/functions/post_testimonials", {
+      const response = await fetch("localhost:5000/add_testimonial", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
