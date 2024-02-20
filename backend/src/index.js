@@ -11,10 +11,7 @@ const MONGODB_URI = `mongodb+srv://nhservices:${encodeURIComponent(
 )}@cluster0.fveujrt.mongodb.net/db?retryWrites=true&w=majority`;
 
 // Connect to MongoDB
-const client = new MongoClient(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const client = new MongoClient(MONGODB_URI);
 
 async function connectToDatabase() {
   try {
@@ -68,6 +65,13 @@ app.get("/testimonials", async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+});
+
+// Close the database connection when the server is shutting down
+process.on("SIGINT", async () => {
+  await client.close();
+  console.log("MongoDB connection closed");
+  process.exit();
 });
 
 module.exports = app;
