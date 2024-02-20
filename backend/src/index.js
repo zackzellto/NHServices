@@ -36,7 +36,7 @@ app.use(json());
 app.use(cors());
 
 // Create a testimonial
-app.post("/testimonials", async (req, res) => {
+app.post("/db/testimonials", async (req, res) => {
   const { firstName, lastName, message, rating } = req.body;
   try {
     const testimonial = new Testimonial({
@@ -53,7 +53,7 @@ app.post("/testimonials", async (req, res) => {
 });
 
 // Get all testimonials
-app.get("/testimonials", async (req, res) => {
+app.get("/db/testimonials", async (req, res) => {
   try {
     const testimonials = await Testimonial.find();
     res.status(200).json(testimonials);
