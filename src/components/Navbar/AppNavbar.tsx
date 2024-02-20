@@ -56,7 +56,7 @@ const AppNavbar = () => {
       <NavbarMenu
         isOpen={isMenuOpen}
         onClose={closeMenu}
-        style={{ width: "50%" }}
+        style={{ width: "60%" }}
       >
         <div className="flex flex-col items-start">
           {" "}
