@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
 const { json } = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const serverless = require("serverless-http");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // MongoDB URI
 const MONGODB_URI = `mongodb+srv://nhservices:${encodeURIComponent(
@@ -63,6 +62,5 @@ app.get("/testimonials", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Wrap the Express app with serverless-http for deployment as a Netlify Function
+module.exports.handler = serverless(app);
