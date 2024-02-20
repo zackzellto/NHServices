@@ -11,10 +11,12 @@ const mongoClient = new MongoClient(process.env.MONGODB_URI);
 // Reusable connection pool
 let clientPromise;
 
-(async () => {
+async function connectToMongoDB() {
   await mongoClient.connect();
   clientPromise = Promise.resolve(mongoClient);
-})();
+}
+
+connectToMongoDB();
 
 const app = express();
 app.use(cors());
