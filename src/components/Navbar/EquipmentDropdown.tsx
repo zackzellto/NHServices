@@ -1,14 +1,21 @@
 import { useState, useRef, useEffect } from "react";
 
-const HeatingPDF1 = "../../brochures/R801T UH Brochure.pdf";
-const HeatingPDF2 = "../../brochures/R802V Brochure.pdf";
-const HeatingPDF3 = "../../brochures/R921V Brochure.pdf";
-const HeatingPDF4 = "../../brochures/R962V Brochure.pdf";
+const HeatingPDF1 =
+  "https://drive.google.com/file/d/1UmjAY6rJSB3H7qEB1FufwVqMNg0Jr5B0/view?usp=drive_link";
+const HeatingPDF2 =
+  "https://drive.google.com/file/d/1LSIlxIRN-Nw8Fq5LH2WRy9oUr8h2xdPp/view?usp=drive_link";
+const HeatingPDF3 =
+  "https://drive.google.com/file/d/1wAsphMUzxLNmbcQNm1zJ88zN8i5jP8lr/view?usp=drive_link";
+const HeatingPDF4 =
+  "https://drive.google.com/file/d/1Jrhf556iA9i576FyccL_z4E5zz2kzsXD/view?usp=drive_link";
 const AirPurifierHalo =
   "https://drive.google.com/file/d/1nadm33Yu_CLgKhMGCi9bY9pXNuPMNJjv/view?usp=drive_link";
-const NavienNPE2 = "../../brochures/NPE-2 Consumer Brochure 2204.pdf";
-const RA13NZ = "../../brochures/RA13NZ Brochure.pdf";
-const RA15AZ = "../../brochures/RA15AZ Brochure.pdf";
+const NavienNPE2 =
+  "https://drive.google.com/file/d/1QCkhVarOGhA2Ji0UjAiGCC8HcCg6D9Kr/view?usp=drive_link";
+const RA13NZ =
+  "https://drive.google.com/file/d/10YUeRT8Bc-bGYOMTTJbsHFQVSb122gm9/view?usp=drive_link";
+const RA15AZ =
+  "https://drive.google.com/file/d/1JFapxq0qq0B-5YBx1gEw5GOWhZkJwYJ9/view?usp=drive_link";
 
 const equipmentData = [
   {
