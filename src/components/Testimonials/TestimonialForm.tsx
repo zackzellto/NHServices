@@ -3,6 +3,7 @@ import { Button, Input, Card } from "@nextui-org/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import React from "react";
 
 interface Testimonial {
   _id: string;

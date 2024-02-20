@@ -4,11 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build:frontend": "vite build",
-    "build:backend": "tsc --project tsconfig.node.json",
-    "build": "npm run build:frontend && npm run build:backend",
-    "dev:frontend": "vite",
-    "dev": "npm run dev:frontend"
+    "build": "vite build",
+    "dev": "vite"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
