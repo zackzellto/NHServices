@@ -20,16 +20,18 @@ exports.handler = async (event, context) => {
     // Insert the new testimonial into the collection
     const result = await collection.insertOne(data);
 
+    // Retrieve the inserted testimonial
+    const insertedTestimonial = await collection.findOne({
+      _id: result.insertedId,
+    });
+
     // Close the MongoDB connection
     await client.close();
 
-    // Respond with a success message
+    // Respond with the inserted testimonial data
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        message: "Testimonial added successfully",
-        insertedId: result.insertedId,
-      }),
+      body: JSON.stringify(insertedTestimonial),
     };
   } catch (error) {
     // Handle any errors that occur during processing

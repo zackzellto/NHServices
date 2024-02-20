@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect } from "react";
-const HeatingPDF1 = "../src/brochures/R801T UH Brochure.pdf";
-const HeatingPDF2 = "../src/brochures/R802V Brochure.pdf";
-const HeatingPDF3 = "../src/brochures/R921V Brochure.pdf";
-const HeatingPDF4 = "../src/brochures/R962V Brochure.pdf";
-const AirPurifierHalo = "../src/brochures/HALO-LED-Spec-sheet-web.pdf";
-const NavienNPE2 = "../src/brochures/NPE-2 Consumer Brochure 2204.pdf";
-const RA13NZ = "../src/brochures/RA13NZ Brochure.pdf";
-const RA15AZ = "../src/brochures/RA15AZ Brochure.pdf";
+import { Document, Page } from "react-pdf";
+
+const HeatingPDF1 = "/brochures/R801T UH Brochure.pdf";
+const HeatingPDF2 = "/brochures/R802V Brochure.pdf";
+const HeatingPDF3 = "/brochures/R921V Brochure.pdf";
+const HeatingPDF4 = "/brochures/R962V Brochure.pdf";
+const AirPurifierHalo = "/brochures/HALO-LED-Spec-sheet-web.pdf";
+const NavienNPE2 = "/brochures/NPE-2 Consumer Brochure 2204.pdf";
+const RA13NZ = "/brochures/RA13NZ Brochure.pdf";
+const RA15AZ = "/brochures/RA15AZ Brochure.pdf";
 
 const equipmentData = [
   {
@@ -63,10 +65,6 @@ const EquipmentDropdown = () => {
     setOpenSubMenu(openSubMenu === equipmentName ? null : equipmentName);
   };
 
-  const openPDFModal = (pdfPath) => {
-    window.open(pdfPath, "_blank");
-  };
-
   return (
     <div ref={dropdownRef} className="relative inline-block text-left">
       <button
@@ -118,13 +116,11 @@ const EquipmentDropdown = () => {
                 {openSubMenu === equipment.name && (
                   <div>
                     {equipment.brochures.map((brochure, brochureIndex) => (
-                      <a
-                        key={brochureIndex}
-                        onClick={() => openPDFModal(brochure.pdf)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                      >
-                        {brochure.title}
-                      </a>
+                      <div key={brochureIndex}>
+                        <Document file={brochure.pdf}>
+                          <Page pageNumber={1} />
+                        </Document>
+                      </div>
                     ))}
                   </div>
                 )}
