@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { Document, Page } from "react-pdf";
 
 const HeatingPDF1 = "../../brochures/R801T UH Brochure.pdf";
 const HeatingPDF2 = "../../brochures/R802V Brochure.pdf";
@@ -46,7 +45,7 @@ const EquipmentDropdown = () => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsEquipmentDropdownOpen(false);
-        setOpenSubMenu(null); // Optionally reset this as well to close sub-menus
+        setOpenSubMenu(null);
       }
     };
 
@@ -58,7 +57,7 @@ const EquipmentDropdown = () => {
 
   const handleEquipmentButtonClick = () => {
     setIsEquipmentDropdownOpen(!isEquipmentDropdownOpen);
-    setOpenSubMenu(null); // Reset sub-menu to ensure it's closed when re-opening the dropdown
+    setOpenSubMenu(null);
   };
 
   const handleSubMenuClick = (equipmentName) => {
@@ -68,7 +67,7 @@ const EquipmentDropdown = () => {
   return (
     <div ref={dropdownRef} className="relative inline-block text-left">
       <button
-        className="inline-flex justify-center w-full rounded-md  py-2 sm:text-md font-medium text-gray-500 cursor-pointer"
+        className="inline-flex justify-center w-full rounded-md py-2 sm:text-md font-medium text-gray-500 cursor-pointer"
         onClick={handleEquipmentButtonClick}
       >
         Equipment
@@ -117,12 +116,14 @@ const EquipmentDropdown = () => {
                   <div>
                     {equipment.brochures.map((brochure, brochureIndex) => (
                       <div key={brochureIndex}>
-                        <Document
-                          file={brochure.pdf}
-                          workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.worker.min.js"
+                        <a
+                          href={brochure.pdf}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                         >
-                          <Page pageNumber={1} />
-                        </Document>
+                          {brochure.title}
+                        </a>
                       </div>
                     ))}
                   </div>
