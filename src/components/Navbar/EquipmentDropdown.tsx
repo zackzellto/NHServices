@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import { Document, Page } from "react-pdf";
 
-const HeatingPDF1 = "/brochures/R801T UH Brochure.pdf";
-const HeatingPDF2 = "/brochures/R802V Brochure.pdf";
-const HeatingPDF3 = "/brochures/R921V Brochure.pdf";
-const HeatingPDF4 = "/brochures/R962V Brochure.pdf";
-const AirPurifierHalo = "/brochures/HALO-LED-Spec-sheet-web.pdf";
-const NavienNPE2 = "/brochures/NPE-2 Consumer Brochure 2204.pdf";
-const RA13NZ = "/brochures/RA13NZ Brochure.pdf";
-const RA15AZ = "/brochures/RA15AZ Brochure.pdf";
+const HeatingPDF1 = "../../brochures/R801T UH Brochure.pdf";
+const HeatingPDF2 = "../../brochures/R802V Brochure.pdf";
+const HeatingPDF3 = "../../brochures/R921V Brochure.pdf";
+const HeatingPDF4 = "../../brochures/R962V Brochure.pdf";
+const AirPurifierHalo = "../../brochures/HALO-LED-Spec-sheet-web.pdf";
+const NavienNPE2 = "../../brochures/NPE-2 Consumer Brochure 2204.pdf";
+const RA13NZ = "../../brochures/RA13NZ Brochure.pdf";
+const RA15AZ = "../../brochures/RA15AZ Brochure.pdf";
 
 const equipmentData = [
   {
