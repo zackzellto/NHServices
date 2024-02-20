@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
 const { json } = require("express");
-const mongoose = require("mongoose");
+const { MongoClient } = require("mongodb");
 const cors = require("cors");
 
 const app = express();
@@ -12,24 +11,31 @@ const MONGODB_URI = `mongodb+srv://nhservices:${encodeURIComponent(
 )}@cluster0.fveujrt.mongodb.net/db?retryWrites=true&w=majority`;
 
 // Connect to MongoDB
-mongoose
-  .connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Connected to your MongoDB"))
-  .catch((err) => console.error("Failed to connect to MongoDB", err));
-
-// Define a schema for testimonials
-const testimonialSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  message: String,
-  rating: Number,
+const client = new MongoClient(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-// Create a Testimonial model
-const Testimonial = mongoose.model("Testimonial", testimonialSchema);
+async function connectToDatabase() {
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.error("Failed to connect to MongoDB", err);
+  }
+}
+
+connectToDatabase();
+
+// Define a collection for testimonials
+let testimonialsCollection;
+
+async function getTestimonialsCollection() {
+  if (!testimonialsCollection) {
+    testimonialsCollection = client.db().collection("testimonials");
+  }
+  return testimonialsCollection;
+}
 
 // Middleware to parse JSON request bodies
 app.use(json());
@@ -39,14 +45,15 @@ app.use(cors());
 app.post("/testimonials", async (req, res) => {
   const { firstName, lastName, message, rating } = req.body;
   try {
-    const testimonial = new Testimonial({
+    const collection = await getTestimonialsCollection();
+    const testimonial = {
       firstName,
       lastName,
       message,
       rating,
-    });
-    await testimonial.save();
-    res.status(201).json(testimonial);
+    };
+    const result = await collection.insertOne(testimonial);
+    res.status(201).json(result.ops[0]);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -55,7 +62,8 @@ app.post("/testimonials", async (req, res) => {
 // Get all testimonials
 app.get("/testimonials", async (req, res) => {
   try {
-    const testimonials = await Testimonial.find();
+    const collection = await getTestimonialsCollection();
+    const testimonials = await collection.find().toArray();
     res.status(200).json(testimonials);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -63,7 +71,3 @@ app.get("/testimonials", async (req, res) => {
 });
 
 module.exports = app;
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
