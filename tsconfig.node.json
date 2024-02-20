@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "outDir": "./dist", // Adjust based on where you want TypeScript compilation output
-    "rootDir": "./src", // Adjust based on your TypeScript source files location
+    "rootDir": "./", // Adjust based on your TypeScript source files location
     "lib": ["ES2020", "DOM"]
   },
   "include": [
