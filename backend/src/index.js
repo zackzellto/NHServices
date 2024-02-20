@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
 const { json } = require("express");
-const { MongoClient } = require("mongodb");
+const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
@@ -11,28 +12,24 @@ const MONGODB_URI = `mongodb+srv://nhservices:${encodeURIComponent(
 )}@cluster0.fveujrt.mongodb.net/db?retryWrites=true&w=majority`;
 
 // Connect to MongoDB
-const client = new MongoClient(MONGODB_URI);
+mongoose
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to your MongoDB"))
+  .catch((err) => console.error("Failed to connect to MongoDB", err));
 
-async function connectToDatabase() {
-  try {
-    await client.connect();
-    console.log("Connected to MongoDB");
-  } catch (err) {
-    console.error("Failed to connect to MongoDB", err);
-  }
-}
+// Define a schema for testimonials
+const testimonialSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  message: String,
+  rating: Number,
+});
 
-connectToDatabase();
-
-// Define a collection for testimonials
-let testimonialsCollection;
-
-async function getTestimonialsCollection() {
-  if (!testimonialsCollection) {
-    testimonialsCollection = client.db().collection("testimonials");
-  }
-  return testimonialsCollection;
-}
+// Create a Testimonial model
+const Testimonial = mongoose.model("Testimonial", testimonialSchema);
 
 // Middleware to parse JSON request bodies
 app.use(json());
@@ -42,15 +39,14 @@ app.use(cors());
 app.post("/testimonials", async (req, res) => {
   const { firstName, lastName, message, rating } = req.body;
   try {
-    const collection = await getTestimonialsCollection();
-    const testimonial = {
+    const testimonial = new Testimonial({
       firstName,
       lastName,
       message,
       rating,
-    };
-    const result = await collection.insertOne(testimonial);
-    res.status(201).json(result.ops[0]);
+    });
+    await testimonial.save();
+    res.status(201).json(testimonial);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -59,19 +55,15 @@ app.post("/testimonials", async (req, res) => {
 // Get all testimonials
 app.get("/testimonials", async (req, res) => {
   try {
-    const collection = await getTestimonialsCollection();
-    const testimonials = await collection.find().toArray();
+    const testimonials = await Testimonial.find();
     res.status(200).json(testimonials);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Close the database connection when the server is shutting down
-process.on("SIGINT", async () => {
-  await client.close();
-  console.log("MongoDB connection closed");
-  process.exit();
-});
-
 module.exports = app;
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });

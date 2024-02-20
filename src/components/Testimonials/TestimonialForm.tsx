@@ -62,7 +62,7 @@ const TestimonialForm: React.FC = () => {
     const fetchTestimonials = async () => {
       try {
         const response = await fetch(
-          "/.netlify/functions/express/testimonials"
+          "https://www.nhserviceshvac.com/testimonials"
         );
         if (response.ok) {
           const data = await response.json();
@@ -93,13 +93,16 @@ const TestimonialForm: React.FC = () => {
     };
 
     try {
-      const response = await fetch("/.netlify/functions/express/testimonials", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newTestimonial),
-      });
+      const response = await fetch(
+        "https://www.nhserviceshvac.com/testimonials",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTestimonial),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
