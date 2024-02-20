@@ -62,7 +62,9 @@ const TestimonialForm: React.FC = () => {
     const fetchTestimonials = async () => {
       try {
         // Make a GET request to the Netlify function endpoint to fetch testimonials
-        const response = await fetch("/.netlify/functions/getTestimonial");
+        const response = await fetch(
+          "https://nhserviceshvac.com/.netlify/functions/getTestimonials"
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -94,13 +96,16 @@ const TestimonialForm: React.FC = () => {
 
     try {
       // Make a POST request to the Netlify function endpoint with the testimonial data
-      const response = await fetch("/.netlify/functions/addTestimonial", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newTestimonial),
-      });
+      const response = await fetch(
+        "https://nhserviceshvac.com/.netlify/functions/addTestimonial",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTestimonial),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
