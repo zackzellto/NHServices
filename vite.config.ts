@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // Proxying API requests to the Express server running on port 5000
+      // Proxying API requests to the Express server
       "/api": {
         target: "http://localhost:5000", // Target backend server
         changeOrigin: true, // Needed for virtual hosted sites
