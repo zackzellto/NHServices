@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button, Input, Card } from "@nextui-org/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -61,9 +61,8 @@ const TestimonialForm: React.FC = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await fetch(
-          "https://www.nhserviceshvac.com/testimonials"
-        );
+        // Adjusted for a generic Netlify function URL pattern
+        const response = await fetch("/.netlify/functions/testimonials");
         if (response.ok) {
           const data = await response.json();
           setTestimonials(data);
@@ -84,8 +83,7 @@ const TestimonialForm: React.FC = () => {
       return;
     }
 
-    const newTestimonial: Testimonial = {
-      _id: Math.random().toString(36).substr(2, 9), // Generate a random id (not recommended for production)
+    const newTestimonial = {
       firstName,
       lastName,
       message,
@@ -93,16 +91,14 @@ const TestimonialForm: React.FC = () => {
     };
 
     try {
-      const response = await fetch(
-        "https://www.nhserviceshvac.com/testimonials",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newTestimonial),
-        }
-      );
+      // Adjusted for a generic Netlify function URL pattern
+      const response = await fetch("/.netlify/functions/testimonials", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTestimonial),
+      });
 
       if (response.ok) {
         const data = await response.json();
@@ -210,7 +206,7 @@ const TestimonialForm: React.FC = () => {
                     backgroundImage:
                       "linear-gradient(to right,#54a0d7, #e75909 )",
                   }}
-                  className=" text-white p-2 rounded-lg shadow-lg w-full"
+                  className="text-white p-2 rounded-lg shadow-lg w-full"
                 >
                   <div className="bg-[#5A5858] p-4">
                     <h3 className="text-xl font-bold underline">{`${testimonial.firstName} ${testimonial.lastName}`}</h3>

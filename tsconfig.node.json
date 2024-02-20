@@ -3,12 +3,18 @@
     "composite": true,
     "target": "ES2020",
     "module": "CommonJS",
-    "outDir": "./dist",
-    "rootDir": "./backend/src",
+    "outDir": "./dist/netlify-functions", // Specify where to output compiled JS files
+    "rootDir": "./netlify-functions", // Source TypeScript files directory
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "moduleResolution": "node"
   },
-  "include": ["backend/src/**/*.ts"],
-  "exclude": ["node_modules", "./dist"]
+  "include": [
+    "netlify-functions/**/*.ts" // Include all TypeScript files in the netlify-functions directory
+  ],
+  "exclude": [
+    "node_modules", // Standard exclude
+    "dist" // Exclude the distribution directory to avoid compiling already compiled files
+  ]
 }

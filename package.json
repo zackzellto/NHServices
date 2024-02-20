@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "build:frontend": "vite build",
-    "build": "npm run build:frontend",
-    "dev:backend": "nodemon backend/src/index.js",
+    "build:backend": "tsc --project tsconfig.node.json",
+    "build": "npm run build:frontend && npm run build:backend",
     "dev:frontend": "vite",
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\""
+    "dev": "npm run dev:frontend"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
@@ -29,6 +29,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
