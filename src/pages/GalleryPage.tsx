@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Footer from "../components/Footer/Footer";
 import NHServicesLogo from "../images/logos/nhservices-logo.png";
 import {
@@ -25,6 +25,11 @@ import GalleryImage13 from "../images/gallery/gallery13.jpg";
 import GalleryImage14 from "../images/gallery/gallery14.jpg";
 import GalleryImage15 from "../images/gallery/gallery15.jpg";
 import GalleryImage16 from "../images/gallery/gallery16.jpg";
+import GalleryImage17 from "../images/gallery/gallery17.jpg";
+import GalleryImage18 from "../images/gallery/gallery18.jpg";
+import GalleryImage19 from "../images/gallery/gallery19.jpg";
+import GalleryImage20 from "../images/gallery/gallery20.jpg";
+import GalleryImage21 from "../images/gallery/gallery21.jpg";
 
 const imageArray: string[] = [
   GalleryImage1,
@@ -43,6 +48,11 @@ const imageArray: string[] = [
   GalleryImage14,
   GalleryImage15,
   GalleryImage16,
+  GalleryImage17,
+  GalleryImage18,
+  GalleryImage19,
+  GalleryImage20,
+  GalleryImage21,
 ];
 
 const GalleryPage: React.FC = () => {
