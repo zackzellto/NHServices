@@ -4,7 +4,7 @@ import NHServicesLogo from "../../images/logos/nhservices-logo.png";
 import FacebookIcon from "../../images/logos/facebook-icon.png";
 import XIcon from "../../images/logos/x-icon.png";
 import InstagramIcon from "../../images/logos/instagram-icon.png";
-import LogiCodeSolutionsLogo from "../../images/logos/LogiCodeSolutions-Logo-White-Blue.png";
+import LogiCodeSolutionsLogo from "../../images/logos/LogiCodeSolutions-Logo-NEW.png";
 import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
