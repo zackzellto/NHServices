@@ -16,6 +16,8 @@ import ContactFormModal from "../components/Modals/ContactFormModal";
 import AboutUsSection from "../LandingPageSections/AboutUsSection";
 import ServiceAreaSection from "../LandingPageSections/ServiceAreaSection";
 import ServicesSection from "../LandingPageSections/ServicesSection";
+import { Button } from "@nextui-org/react";
+import SynchronyLogo from "../images/logos/synchrony-logo.png";
 
 const LandingPage = () => {
   const location = useLocation();
@@ -62,6 +64,28 @@ const LandingPage = () => {
             />
           </div>
         </div>
+
+        {/* Synchrony Financing Logo and Button */}
+        <div className="flex flex-col items-center sm:flex-col sm:items-start sm:justify-start w-full sm:ml-28 sm:-mt-10 sm:mb-10">
+          <Button
+            className="mt-4 sm:mt-0 sm:mb-2 h-10 sm:h-12 text-[#3B3D44] font-semibold text-sm sm:text-lg
+drop-shadow-xl bg-[#FBC600] hover:bg-[#3B3D44] hover:text-[#FBC600] active:bg-[#FBC600] border-1 border-[#000000] hover:border-[#FBC600] rounded-lg p-4 sm:p-4 sm:px-8 sm:py-2"
+          >
+            <a
+              href="https://www.synchrony.com/mmc/M9229374400"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Financing Available!
+            </a>
+          </Button>
+          <img
+            src={SynchronyLogo}
+            alt="Synchrony Financing"
+            className="h-8 mt-2 sm:mt-0 sm:h-12 w-auto"
+          />
+        </div>
+
         {/* NH Services Logo */}
         <Link to="/" className="nav-link">
           <img

@@ -66,7 +66,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
           backgroundImage: "linear-gradient(to right,#54a0d7, #e75909 )",
         }}
         onPress={onOpen}
-        className="max-w-fit text-lg m-4 text-white font-semibold drop-shadow-lg"
+        className="max-w-fit text-lg m-4 text-white font-semibold p-8 drop-shadow-lg"
       >
         {buttonText}
       </Button>
