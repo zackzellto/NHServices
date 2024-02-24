@@ -6,6 +6,7 @@ import XIcon from "../../images/logos/x-icon.png";
 import InstagramIcon from "../../images/logos/instagram-icon.png";
 import LogiCodeSolutionsLogo from "../../images/logos/LogiCodeSolutions-Logo-NEW.png";
 import { Link } from "react-router-dom";
+import { Button } from "@nextui-org/react";
 
 const Footer: React.FC = () => {
   const socialMediaLinks = [
@@ -39,11 +40,20 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="footer-middle flex flex-col items-center justify-center w-full sm:w-auto mt-4 sm:mt-0">
-        <img
-          src={SocialMediaQRCode}
-          alt="QR Code"
-          className="w-32 h-32 mb-2 rounded-md drop-shadow-lg"
-        />
+        <Button className="w-32 h-32 sm:w-40 sm:h-40 relative overflow-hidden p-0 border-0 shadow-xl mt-4">
+          <a
+            href="https://myqrcode.com/qr/be124a71/view"
+            target="_blank"
+            className="block w-full h-full"
+          >
+            <img
+              src={SocialMediaQRCode}
+              alt="Social Media QR Code"
+              className="w-full h-full object-cover"
+            />
+          </a>
+        </Button>
+        <span className="text-xl mt-2 mb-4">(Click or Scan!)</span>
         <div className="flex space-x-4 drop-shadow-lg mt-4 mb-4">
           {socialMediaLinks.map((link, index) => (
             <a
